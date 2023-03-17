@@ -6,7 +6,19 @@ function randomColor(x) {
   let randomB = Math.floor(Math.random() * 255);
   let randColor = `rgb(${randomR}, ${randomG}, ${randomB})`;
 
-  x.style.backgroundColor = randColor;
+  const cssObj = window.getComputedStyle(x);
+  let bgColor = cssObj.getPropertyValue("background-color");
+
+  if (bgColor != "rgba(0, 0, 0, 0)") {
+    if (bgColor.indexOf(",") != -1) {
+      let rgb = bgColor.slice(4, -1);
+      let segments = rgb.split(",");
+      let map = segments.map((x) => parseInt(x) - 25.5);
+      x.style.backgroundColor = `rgb(${map})`;
+    }
+  } else {
+    x.style.backgroundColor = randColor;
+  }
 }
 
 function createGrid() {
