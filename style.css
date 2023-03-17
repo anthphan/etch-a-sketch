@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+}
+
+.box {
+  border: 1px solid black;
+  box-sizing: border-box;
+  display: block;
+  width: 25px;
+  height: 25px;
+}
+
+.container {
+  display: flex;
+  width: 960px;
+  height: 960px;
+}
+
+.container > div {
+  height: 25px;
+}
